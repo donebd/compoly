@@ -51,6 +51,25 @@ object Gulag : Votable() {
         }
     }
 
+    @OnCommand(["оправдать", "justify"], "свободу политосужденным!")
+    fun justifyMember(event: LongPollNewMessageEvent) {
+        votingAgainst(event) { api, chatId, _, target ->
+            val screenName = target.targetScreenName
+            if (super.voting[target.targetId to chatId] == null) {
+                api.send("Партия не ссудит $screenName", chatId)
+                return@votingAgainst null
+            }
+
+            val votingForMessage = "Если ты ручаешься за товарища $screenName\n" +
+                    "Отправь /оправдать ${target.rawText}"//unused now, maybe can be used in voting gulag init
+            val successVoteMessage = "против отправления $screenName в лагерь"
+            val keyboardMessage = "/оправдать ${target.rawText}"
+            val onEndVotingMessage = "$screenName полностью чист перед партией"
+            //unused, cause don't have onVotingTimeIsUP
+            Messages(votingForMessage, successVoteMessage, keyboardMessage, onEndVotingMessage)
+        }
+    }
+
     @OnCommand(["вернуть", "back"], "вернуть из ссылки", CommandPermission.ADMIN)
     fun cancelVotingResultGulag(event: LongPollNewMessageEvent) {
         cancelVotingResult(event, "Самопроизвольное возвращение из ссылки запрещено!") { api, chatId, _, target ->

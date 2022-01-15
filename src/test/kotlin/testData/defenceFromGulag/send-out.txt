@@ -1,6 +1,10 @@
 [
   {
+<<<<<<< HEAD
     "text": "Голосование на отправление @marx в лагерь началось - 1/12\nОтправь /гулаг [id2|@marx], или /оправдать [id2|@marx], если ты ручаешься за товарища!",
+=======
+    "text": "Голосование на отправление @marx в лагерь началось - 1/12\nОтправь /гулаг [id2|@marx]",
+>>>>>>> 9e58b35 (Adding the ability to protect the defendant from the gulag (#35))
     "chatId": 1,
     "pixUrls": [],
     "keyboard": {
@@ -8,11 +12,14 @@
         {
           "callbackMessage": "/гулаг [id2|@marx]",
           "showingName": "за",
+<<<<<<< HEAD
           "color": "POSITIVE"
         },
         {
           "callbackMessage": "/оправдать [id2|@marx]",
           "showingName": "против",
+=======
+>>>>>>> 9e58b35 (Adding the ability to protect the defendant from the gulag (#35))
           "color": "NEGATIVE"
         }
       ]
